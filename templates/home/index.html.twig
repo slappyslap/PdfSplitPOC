@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PDF FILE SPLIT{% endblock %}
+
+{% block body %}
+    <div class="container jumbotron mt-4">
+        <h1>TEST SPLIT PDF</h1>
+            <form action="" method="POST" enctype="multipart/form-data">
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="file" name="file">
+                    <label class="input-group-text" for="file">PDF</label>
+                </div>
+
+                {% for user in users %}
+                    <div class="input-group mb-3">
+
+                        <h2>{{ user.email }}</h2>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="">Start</label>
+                                <input type="number" class="form-control" name="data[{{ user.email }}][start]">
+                            </div>
+
+                            <div class="col-6">
+                                <label for="">End</label>
+                                <input type="number" class="form-control" name="data[{{ user.email }}][end]">
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+                <button type="submit">SEND</button>
+            </form>
+    </div>
+{% endblock %}
